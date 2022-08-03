@@ -8,7 +8,7 @@ echo "Welcome to Employee Wage Computation Program "
 echo ""
 
 
-#Refactor the Code to write a function to get work hours
+#Store the Daily Wage along with the Total Wage
 
 function calculateWorkingHour() {
 	case $1 in
@@ -43,6 +43,9 @@ do
 	salary=$(($perHourSalary * $wHour));
 	totalSalary=$(($totalSalary + $salary));
 	((day++));
+	echo "Daily Wage : $ $salary      Total Wage : $ $totalSalary"
+	echo ""
+
 done
 
 
