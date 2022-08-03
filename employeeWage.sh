@@ -5,48 +5,52 @@ echo ""
 
 #Start with Displaying Welcome to Employee Wage Computation Program on Master Branch
 echo "Welcome to Employee Wage Computation Program "
+echo ""
 
 
-#Check Employee is Present or Absent
-attendance=$(($((RANDOM%2))+1))
-h=8
+#Calculate Wages till a condition of total working hours or days is reached for a month
+#Assume 100 hours and 20 days
 
-if [[ $attendance -eq 1 ]]; then
-	echo "Employee is present."
-else
-	echo "Employee is absent."
-fi
+perHourSalary=20;
+workingHour=0;
+totalSalary=0;
+totalWorkingHour=0;
+day=1
 
-#Calculate daily wage = 20 times number of hours #Full day=8hours
-dailyWage=$((h*20))  
-
-
-#Solving using Switch Case Statement
-
-isPartTime=1;
-isFullTime=2;
-empRatePerHr=20;
-empCheck=$(($((RANDOM%2))+1));
-
-case $empCheck in
-	$isFullTime)
-		h=8
-		echo "Employee is a Full time employee"
+while [[ $day -le 20 && $totalWorkingHour -lt 100 ]]
+do
+	((day++));
+	isPresent=$((RANDOM%3));
+	case $isPresent in
+		0)
+		echo "Employee is absent";
+		workingHour=0;
 		;;
-	$isPartTime)
-		h=8
-		echo "Employee is a Part time employee"
+
+		1)
+		echo "Employee is working full time";
+		workingHour=8;
 		;;
-esac
 
-#Calculating Wages for a Month
-#Assume 20 Working Day per Month
+		2)
+		echo "Employee is working part time";
+		workingHour=8;
+		;;
+	esac
+	totalWorkingHour=$(($totalWorkingHour + $workingHour));
+	if [ $totalWorkingHour -gt 100 ]
+	then
+		totalWorkingHour=$(($totalWorkingHour - $workingHour));
+		break;
+	fi
+	salary=$(($perHourSalary * $workingHour));
+	totalSalary=$(($totalSalary + $salary));
+done
 
-dailyWage=$((h*20))
-monthlyWage=$((dailyWage*20))
 
-echo "Daily wage : $ $dailyWage"
-echo "Monthly wage : $ $monthlyWage"
+echo "Days worked : $day"
+echo "Total working hours : $totalWorkingHour"
+echo "Salary for the month : $totalSalary"
 
 
 echo ""
