@@ -42,9 +42,10 @@ do
 	fi
 	salary=$(($perHourSalary * $wHour));
 	totalSalary=$(($totalSalary + $salary));
-	((day++));
-	echo "Daily Wage : $ $salary      Total Wage : $ $totalSalary"
+	echo "Day : $day    Daily Wage : $ $salary      Total Wage : $ $totalSalary"
 	echo ""
+	((day++));
+
 
 done
 
