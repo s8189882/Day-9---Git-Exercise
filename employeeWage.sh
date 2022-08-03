@@ -17,16 +17,24 @@ else
 	echo "Employee is absent."
 fi
 
-
 wage=$((h*20))  #daily wage = 20 times number of hours #Full day=8hours
 
+isPartTime=1;
+isFullTime=2;
+empRatePerHr=20;
+empCheck=$(($((RANDOM%2))+1));
 
-
-#part time hour is 8
-# wages per hour is 20
-wages=$(( 20*8))
-
-echo "Part time wages :$wages"
+case $empCheck in
+	$isFullTime)
+		h=8
+		;;
+	$isPartTime)
+		h=8
+		;;
+	*)
+		h=0
+		;;
+esac
 
 
 echo ""
