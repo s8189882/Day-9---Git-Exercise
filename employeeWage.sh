@@ -6,6 +6,8 @@
 
 
 echo ""
+
+
 echo "Welcome to Employee Wage Computation Program "
 
 
@@ -17,4 +19,10 @@ if [[ $attendance -eq 1 ]]; then
 else
 	echo "Employee is absent."
 fi
+
+h=1
+wage=$((h*20))
+echo $wage
+
+
 echo ""
